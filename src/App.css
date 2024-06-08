@@ -1,0 +1,9 @@
+button:active{
+    transform: scale(0.95);
+}
+
+html{
+    background-color:bisque;
+    scrollbar-width: thin;          /* "auto" or "thin" */
+    scrollbar-color: rgb(253, 253, 253) rgb(241, 209, 147);   /* scroll thumb and track */ 
+}
