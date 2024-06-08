@@ -18,7 +18,6 @@ const SearchBar = ({ query, setQuery }) => {
     const handleClickSearch = (e) => {
         e.preventDefault();
         const value = e.target.value;
-        console.log(value);
         setQuery(value)
     }
         
@@ -130,7 +129,6 @@ const Books = () =>{
         number_of_pages_median : 0 
         }
         
-        console.log(store);
         
     function isObjectInArray(obj) {
         return store.some(item => 
@@ -157,7 +155,7 @@ const Books = () =>{
         }
 
         const flag = isObjectInArray(obj);
-        console.log(flag);
+     
         if(!flag){
             setStore(prev => {
                 const newArray = [...prev, obj];
@@ -178,26 +176,27 @@ const Books = () =>{
                 query = {query}
                 setQuery = {setQuery}
             />
-                
+                <div className='flex justify-center'>
                 {/* Displaying fetched books */}
                 {
-                !isLoading ? 
-                <ul className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row px-10 py-5 gap-2'>
-                    {
-                        data?.docs.map((item, id) => (    
-                            <BookDisplay 
-                                key = {id} 
-                                item = {item} 
-                                manipulationFunction = {handleAddToBookshelf}
-                                flag = {false} 
-                                id = {id}   
-                            />
-                        ))
-                    }
+                    !isLoading ? 
+                    <ul className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row px-10 py-5 gap-2'>
+                        {
+                            data?.docs.map((item, id) => (    
+                                <BookDisplay 
+                                    key = {id} 
+                                    item = {item} 
+                                    manipulationFunction = {handleAddToBookshelf}
+                                    flag = {false} 
+                                    id = {id}   
+                                />
+                            ))
+                        }
                         </ul>
                         : 
                         <LoadingComponent />
-                        }
+                }
+                </div>
         </div>
     )
 }
